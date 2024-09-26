@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ctn {
+            border: 2px solid;
+            padding: 20px;
+            font-size: 5rem;
+            margin: 10px;
+            text-align: justify;
+
+        }
+        span{
+            margin: 5px;
+        }
+        #btn1{
+            margin: 3px;
+        }
+        #btn2{
+            margin: 6px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid w-100 m-5">
+        <input type="text" class="form-control" id="input">
+        <button class="btn btn-primary mt-3"  id="btn">Add Text</button>
+    </div>
+    <div class="container-fluid w-50 m-5" id="main">
+    </div>
+
+
+    <script>
+        let btn = document.getElementById("btn");
+        let input = document.getElementById("input");
+        let main = document.getElementById("main");
+        
+        btn.addEventListener("click", function () {
+            let div = document.createElement("div");
+            div.id = "ctn";
+        
+            let span = document.createElement("span");
+            span.innerText = input.value;
+            div.appendChild(span);
+        
+            let button = document.createElement("button");
+            button.id="btn1"
+            button.className = "btn btn-outline-danger";
+        
+            button.innerText = "Delete";
+            div.appendChild(button);
+        
+            button.addEventListener("click", function () {
+                div.remove();
+            })
+        
+            let button1=document.createElement("button");
+            button1.id="btn2"
+             button1.className = "btn btn-outline-warning";
+        
+            button1.innerText="edit text"
+            div.appendChild(button1);
+        
+            button1.addEventListener("click",function(){
+                span.contentEditable=true;
+                span.focus();
+            })
+            main.appendChild(div);
+        })
+        </script>
+</body>
+</html>
